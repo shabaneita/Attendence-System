@@ -1,0 +1,251 @@
+<html>
+
+<head>
+    <title>Attendance System</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/font-awesome.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+
+
+
+    <script>
+        fetch('data.json')
+            .then(function(response) {
+                return response.json();
+            })
+            .then(function(data) {
+                //  console.log(data);
+
+
+                var html = "<table class='table table-bordered table-striped border-info bg-light w-100'  border='1|1'>";
+                var html = `<thead class="text-center" > 
+                    
+                    <th class="text-center bg-success " >Employee Name</th>
+                                <th  scope="col" class="text-center  bg-success">Attendance</th>
+                                <th  scope="col" class="text-center  bg-success">Late </th>
+                                <th  scope="col" class="text-center  bg-success">Excuse</th>
+                               
+                    </thead>`
+                for (var i = 0; i < data.length; i++) {
+                    html += "<tr class='text-center'>";
+                    html += "<td class='p-2  small'>" + data[i].firstname + data[i].lastname + "</td>";
+                    html += "<td class='p-2  small'>" + data[i].report.attendance + "</td>";
+                    html += "<td class='p-2  small'>" + data[i].report.late + "</td>";
+                    html += "<td class='p-2  small'>" + data[i].report.absence + "</td>";
+                    html += "</tr>";
+                }
+                html += "</table>";
+                document.getElementById("allemployeedata").innerHTML = html;
+                // 
+
+
+            });
+    </script>
+</head>
+
+
+
+<body>
+    <div class="container">
+
+
+        <nav class="navbar navbar-expand-lg navbar-light ">
+            <a class="navbar-brand  " href="#">LOGO</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+            <div class="collapse navbar-collapse justify-content-end " id="navbarSupportedContent">
+                <ul class="navbar-nav ">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link " href="/notification.html"><i class="fa  fa-bell"></i></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link " href="/index.html">logout</a>
+                    </li>
+
+
+            </div>
+        </nav>
+    </div>
+
+    <div class="container ADMINBODY pt-5">
+        <div class="row">
+            <div class=" col-12 ceter">
+
+                <form action="" method="GET" id="fileForm" role="form">
+
+                    <ul class="nav nav-tabs justify-content-lg-between" id="myTab" role="tablist">
+                        <li class="nav-item" role="presentation">
+                            <a class="nav-link active" id="AllEmployees-tab" data-toggle="tab" href="#AllEmployees" role="tab" aria-controls="AllEmployees" aria-selected="true">All Employees</a>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <a class="nav-link" id="FullReport-tab" data-toggle="tab" href="#FullReport" role="tab" aria-controls="FullReport" aria-selected="false">Full Report</a>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <a class="nav-link" id="LateReport-tab" data-toggle="tab" href="#LateReport" role="tab" aria-controls="LateReport" aria-selected="false">LateReport</a>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <a class="nav-link" id="ExcuseReport-tab" data-toggle="tab" href="#ExcuseReport" role="tab" aria-controls="ExcuseReport" aria-selected="false">Excuse Report</a>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <a class="nav-link" id="EmployeeBrief-tab" data-toggle="tab" href="#EmployeeBrief" role="tab" aria-controls="EmployeeBrief" aria-selected="false">Employee Brief</a>
+                        </li>
+                    </ul>
+                    <div class="tab-content" id="myTabContent">
+                        <div class="tab-pane fade show active" id="AllEmployees" role="tabpanel" aria-labelledby="AllEmployees-tab">
+                            <table id="allemployeedata" class='table table-bordered table-striped border-info bg-light w-100'></table>
+
+                        </div>
+                        <div class="tab-pane fade" id="FullReport" role="tabpanel" aria-labelledby="FullReport-tab">
+                            <table class="table table-bordered table-striped border-info bg-light ">
+                                <thead class="bg-success">
+                                    <tr>
+                                        <th scope="col">Employee Name</th>
+                                        <th scope="col">Attendance</th>
+                                        <th scope="col">Late</th>
+                                        <th scope="col">Excuse</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>John Doe</td>
+                                        <td>24</td>
+                                        <td>3</td>
+                                        <td>3</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Tom Cruse</td>
+                                        <td>23</td>
+                                        <td>3</td>
+                                        <td>2</td>
+                                    </tr>
+                                    <tr>
+
+                                        <td>Ahmed Ezz</td>
+                                        <td>20</td>
+                                        <td>3</td>
+                                        <td>1</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="tab-pane fade" id="LateReport" role="tabpanel" aria-labelledby="LateReport-tab">
+                            <table class="table table-bordered table-striped border-info bg-light ">
+                                <thead class="bg-success">
+                                    <tr>
+                                        <th scope="col">Employee Name</th>
+                                        <th scope="col">Attendance</th>
+                                        <th scope="col">Late</th>
+                                        <th scope="col">Excuse</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>John Doe</td>
+                                        <td>24</td>
+                                        <td>3</td>
+                                        <td>3</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Tom Cruse</td>
+                                        <td>23</td>
+                                        <td>3</td>
+                                        <td>2</td>
+                                    </tr>
+                                    <tr>
+
+                                        <td>Ahmed Ezz</td>
+                                        <td>20</td>
+                                        <td>3</td>
+                                        <td>1</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="tab-pane fade" id="ExcuseReport" role="tabpanel" aria-labelledby="ExcuseReport-tab">
+                            <table class="table table-bordered table-striped border-info bg-light ">
+                                <thead class="bg-success">
+                                    <tr>
+                                        <th scope="col">Employee Name</th>
+                                        <th scope="col">Attendance</th>
+                                        <th scope="col">Late</th>
+                                        <th scope="col">Excuse</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>John Doe</td>
+                                        <td>24</td>
+                                        <td>3</td>
+                                        <td>3</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Tom Cruse</td>
+                                        <td>23</td>
+                                        <td>3</td>
+                                        <td>2</td>
+                                    </tr>
+                                    <tr>
+
+                                        <td>Ahmed Ezz</td>
+                                        <td>20</td>
+                                        <td>3</td>
+                                        <td>1</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="tab-pane fade" id="EmployeeBrief" role="tabpanel" aria-labelledby="EmployeeBrief-tab">
+                            <table class="table table-bordered table-striped border-info bg-light ">
+                                <thead class="bg-success">
+                                    <tr>
+                                        <th scope="col">Employee Name</th>
+                                        <th scope="col">Attendance</th>
+                                        <th scope="col">Late</th>
+                                        <th scope="col">Excuse</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>John Doe</td>
+                                        <td>24</td>
+                                        <td>3</td>
+                                        <td>3</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Tom Cruse</td>
+                                        <td>23</td>
+                                        <td>3</td>
+                                        <td>2</td>
+                                    </tr>
+                                    <tr>
+
+                                        <td>Ahmed Ezz</td>
+                                        <td>20</td>
+                                        <td>3</td>
+                                        <td>1</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+
+    <!-- --------------------------------------------- -->
+    <script src="js/JQuery-3.3.1.min.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/main.js"></script>
+</body>
+
+</html>

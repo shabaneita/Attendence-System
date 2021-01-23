@@ -1,0 +1,117 @@
+<html>
+
+<head>
+    <title>Registeration</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet" id="bootstrap-css">
+</head>
+
+<body>
+
+    <div class="register-bannar ">
+        <nav aria-label="breadcrumb" class=" h-100 d-flex justify-content-center align-items-center">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/index.html" class="text-danger">Home</a></li>
+                <li class="breadcrumb-item active text-white" aria-current="page">register</li>
+            </ol>
+        </nav>
+    </div>
+    <section class="register-form pt-5">
+        <div class="container">
+            <div action="" type="post" method="POST" id="fileForm" role="form">
+                <fieldset>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="firstname"><span class="req">* </span> First name: </label>
+                                <input class="form-control" type="text" name="firstname" id="firstname" onkeyup="Validate(this)" placeholder="ex.Shaban" required />
+                                <div id="errFirst"></div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="lastname"><span class="req">* </span> Last name: </label>
+                                <input class="form-control" type="text" name="lastname" id="lastname" onkeyup="Validate(this)" placeholder="ex.Hassan" required />
+                                <div id="errLast"></div>
+                            </div>
+
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="username"><span class="req">* </span> User Name: </label>
+                                <input class="form-control" type="text" name="username" id="username" onkeyup="Validate(this)" placeholder="ex.Hassan" required />
+                                <div id="errLast"></div>
+                            </div>
+
+                        </div>
+
+                        <div class="col-md-6">
+
+                            <div class="form-group ">
+                                <label for="address"><span class="req">*</span>Address</label>
+                                <input class="form-control " required type="text" name="address" id="address" onkeyup="Validate(this)" placeholder="ex.Cairo" onchange="add_validate(this.value);" required></input>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="email"><span class="req">* </span> Email Address: </label>
+                                <input class="form-control" type="text" name="email" id="email" onchange="email_validate(this.value);" required/>
+                                <div class="status" id="status"></div>
+                            </div>
+
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="form-group ">
+                                <label for="age"><span class="req">*</span>Age :</label>
+                                <input type="number" min="20" max="60" required="true" class="form-control " id="age" placeholder="Age Must be from 20 to 60 " onkeyup="Validate(this) " required>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group ">
+                                <label for="password"><span class="req">*</span>Password :</label>
+                                <input type="password" required="true" class="form-control " id="password" required>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group ">
+                                <label for="rewritepassword"><span class="req">*</span>rewrite Password :</label>
+                                <input type="password" required="true" class="form-control " id="rewritepassword" required>
+                            </div>
+                        </div>
+
+                        <div class=" col-md-12 ">
+                            <div class="form-group ">
+                                <button class="btn btn-success btn-register " id="btn-register" type="button" name="submit_reg " value="Register ">
+                                    Register   </button>
+                                <p id="pReg" class="d-none  mt-3 text-white p-3 rounded "> Rgister Success</p>
+
+                            </div>
+                        </div>
+                        <div class=" col-md-12 ">
+
+                            <small id=" emailHelp " class=" form-text text-muted ">You will receive an email to complete
+                                    the
+                                    registration and validation process.</small>
+                            <small id=" emailHelp " class=" form-text text-muted ">Be sure to check your spam
+                                    folders.</small>
+
+                        </div>
+                    </div>
+
+                </fieldset>
+            </div>
+        </div>
+
+    </section>
+    <!-- ------------------------------------- -->
+    <script src="js/JQuery-3.3.1.min.js "></script>
+    <script src="js/popper.min.js "></script>
+    <script src="js/bootstrap.min.js "></script>
+    <script src="js/main.js "></script>
+
+</body>
+
+</html>

@@ -1,0 +1,78 @@
+body {
+    padding-top:50px;
+    background-color: orange;
+}
+fieldset {
+    border: thin solid #ccc; 
+    border-radius: 4px;
+    padding: 20px;
+    padding-left: 40px;
+    background: #fbfbfb;
+}
+legend {
+   color: #678;
+}
+.form-control {
+    width: 95%;
+}
+label small {
+    color: #678 !important;
+}
+span.req {
+    color:maroon;
+    font-size: 112%;
+}
+
+
+
+
+
+.ADMINBODY ul
+{
+    border:1px ;
+    background-color:lightyellow;
+    padding: 10px;
+    color: white;
+
+    
+}
+.ADMINBODY a
+{
+    background-color:orange;
+    padding:5px 50px;
+    color: white;
+
+    
+}
+
+.ADMINBODY table thead
+{
+    margin-top: 50px;
+    color: white;
+    margin:10px 50px;
+    text-align: center;
+    
+
+    
+}
+.ADMINBODY table td
+{
+    border: 2px solid green;
+    text-align: center;
+    margin:10px 50px;
+    padding: 10px;
+    
+
+    
+}
+
+ #Adm 
+{
+
+padding: 17px;
+background-color: white;
+color: black;
+border: 1px solid rgb(25, 150, 13);
+border-radius: 80%;
+font-size: large;
+}

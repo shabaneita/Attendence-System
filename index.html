@@ -1,0 +1,178 @@
+<html>
+
+<head>
+
+
+
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet" id="bootstrap-css">
+    <script>
+        // function fakeFetch() {
+        //     console.log(Promise.resolve);
+        //     return Promise.resolve([{
+        //         "email": "James",
+        //         "pwd": "1111"
+        //     }, {
+        //         "email": "Peter",
+        //         "pwd": "2222"
+        //     }, {
+        //         "email": "Josh",
+        //         "pwd": "3333"
+        //     }]);
+
+        // }
+
+        // const form = document.querySelector('form');
+
+        // form.addEventListener('submit', function(e) {
+        //     e.preventDefault();
+
+        //     const emailInput = document.querySelector('#email').value;
+        //     const pwdInput = document.querySelector('#pwd').value;
+
+        //     const object = {
+        //         email: emailInput,
+        //         pwd: pwdInput
+        //     };
+
+        //     fakeFetch()
+        //         .then(users => {
+
+        //             // Check each user in users and try to find a match
+        //             for (let user of users) {
+        //                 // Destructuring email and password from the current user
+        //                 let {
+        //                     email,
+        //                     pwd
+        //                 } = user;
+
+        //                 // Comparing email and pwd from active user with the ones in object
+        //                 if (email === object.email && pwd === object.pwd) {
+        //                     // Found, do something
+        //                     console.log('found!');
+        //                     return;
+        //                 }
+        //             }
+
+        //             // Not found, do something else
+        //             console.log('Not found...');
+
+        //         })
+        //         .catch(error => console.log(error));
+
+        // });
+    </script>
+
+    <script>
+        const admin = {
+            username: "Admin",
+            password: "Admin"
+        }
+        window.addEventListener('load', checkDataLogin);
+
+        function checkDataLogin() {
+            // Use the Fetch API & ES6
+            fetch('data.json')
+                .then(response => response.json())
+                .then(data => {
+                    const form = document.querySelector('form');
+
+                    form.addEventListener('submit', function(e) {
+                        e.preventDefault();
+
+                        const usernameInput = document.querySelector('#username').value;
+                        const pwdInput = document.querySelector('#pwd').value;
+
+                        if (admin.username == usernameInput && admin.password == pwdInput) {
+                            window.location.replace('../AdminPanel.html');
+                            return;
+                        }
+                        //console.log(data);
+                        for (i = 0; i < data.length; i++) {
+                            // console.log(data);
+                            if (data[i].username == usernameInput && data[i].password == pwdInput) {
+                                console.log('found!');
+                                alert("welcome " + data[i].firstname + " " + data[i].lastname);
+                                var dataEmploye = data[i].firstname + " " + data[i].lastname;
+                                window.location.replace('../Employee.html');
+                                //window.open("ُEmployee.html", "_anything_");
+                                sessionStorage.setItem('userdata', JSON.stringify(data[i]));
+
+                                return;
+                            }
+                        }
+                        // Not found, do something else
+                        console.log(' Not found...');
+                        alert("failed to login your user or pass not matched   ");
+
+
+                    }).catch(error => console.log(error));
+                });
+        }
+    </script>
+
+
+
+</head>
+
+<body>
+    <section class="bannar">
+        <div class="container">
+            <nav class="navbar navbar-expand-lg navbar-light ">
+                <a class="navbar-brand text-white " href="#">LOGO</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+                <div class="collapse navbar-collapse justify-content-end " id="navbarSupportedContent">
+                    <ul class="navbar-nav ">
+                        <li class="nav-item active">
+                            <a class="nav-link text-white" href="#">Home <span class="sr-only">(current)</span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white" href="#" data-toggle="modal" data-target="#exampleModal">Login</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white" href="/Register.html">Register</a>
+                        </li>
+                </div>
+            </nav>
+        </div>
+    </section>
+    <!-- Modal login -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Login </h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+                </div>
+                <div class="modal-body">
+                    <form id="login-form">
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">User Name</label>
+                            <input type="text" class="form-control" id="username" aria-describedby="emailHelp">
+
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputPassword1">Password</label>
+                            <input type="password" class="form-control" id="pwd">
+                        </div>
+
+                        <input type="submit" class="btn btn-primary"></input>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- ------------------------------- -->
+    <script src="js/JQuery-3.3.1.min.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/main.js"></script>
+
+</body>
+
+</html>

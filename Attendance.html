@@ -1,0 +1,150 @@
+<html>
+
+<head>
+    <title>Attendance System</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+</head>
+
+<body>
+    <section class="attendance">
+        <div class="container">
+            <div class="row d-flex justify-content-center align-items-center h-100">
+                <div class="col-12">
+                    <h3 class="text-capitalize text-center mb-0"> add Attendance</h3>
+                </div>
+                <div class="col-6">
+                    <div class="box-attendance ">
+                        <div class="form-group d-flex align-items-center">
+
+                            <label for="exampleFormControlInput1" class="mr-3">userName </label>
+                            <input id="username" type="text" class="form-control">
+                        </div>
+                        <div class="form-group text-center mt-3">
+                            <button id="confirm" class="btn btn-success text-capitalize " data-toggle="modal " data-target="#exampleModal ">confirm Attendance</button>
+                        </div>
+                        <!-- Modal -->
+                        <div class="modal fade " id="exampleModal " tabindex="-1 " aria-labelledby="exampleModalLabel " aria-hidden="true ">
+                            <div class="modal-dialog ">
+                                <div class="modal-content ">
+                                    <div class="modal-header p-1 ">
+
+                                        <button type="button " class="close " data-dismiss="modal " aria-label="Close ">
+                                            <span aria-hidden="true ">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body ">
+                                        <ol>
+                                            <li class="d-flex ">
+                                                <b class="mr-3 "> Employee Name :</b>
+                                                <span id="empName" class="bg-light d-inline-block p-1 rounded ">shaban Essam</span>
+                                            </li>
+                                            <li class="d-flex mt-2 ">
+                                                <b class="mr-3 ">Attendance Time :</b>
+                                                <span id="time" class="bg-light d-inline-block p-1 rounded ">11-20</span>
+                                            </li>
+
+                                        </ol>
+                                    </div>
+                                    <div class="modal-footer ">
+                                        <button type="button " class="btn btn-secondary " data-dismiss="modal ">Close</button>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- --------------------------------------------- -->
+    <script src="js/JQuery-3.3.1.min.js "></script>
+    <script src="js/popper.min.js "></script>
+    <script src="js/bootstrap.min.js "></script>
+    <script src="js/main.js "></script>
+
+
+    <script>
+        function saveJSONFile(data, filename) {
+            var dataToSave = new Blob([JSON.stringify(data)], {
+                type: "application/json"
+            });
+            var link = document.createElement("a");
+            link.href = window.webkitURL.createObjectURL(dataToSave);
+            link.setAttribute("download", filename);
+            document.getElementsByTagName("body")[0].appendChild(link);
+            link.click();
+            $(link).remove();
+        }
+
+        fetch('data.json')
+            .then(response => response.json())
+            .then((data) => {
+                //console.log(data);
+                var confirm = document.getElementById("confirm");
+                confirm.addEventListener("click", function() {
+
+                    var username = document.getElementById("username");
+                    var user;
+
+                    //console.log(userName.value);
+                    var today = new Date();
+
+                    // 
+                    for (i = 0; i < data.length; i++) {
+                        // console.log(data);
+                        if (data[i].username == username.value) {
+                            user = data[i];
+                            //console.log(user);
+                        }
+                    }
+                    if (user) {
+                        if (!user.attendance) {
+                            user.attendance = [];
+                        }
+                        var enterTime = today.toLocaleTimeString();
+                        var latetime = new Date();
+                        latetime.setHours("9", "0", "0");
+                        var absenttime = new Date();
+                        absenttime.setHours("10", "0", "0");
+                        user.attendance[today.getDate()] = enterTime;
+                        if (!user.report) {
+                            user.report = {
+                                attendance: 0,
+                                absence: 0,
+                                late: 0
+                            };
+
+                            if (today.getTime() >= absenttime.getTime()) {
+                                user.report.absence++;
+                            } else if (today.getTime() >= latetime.getTime()) {
+
+                                user.report.late++;
+
+                            } else {
+                                user.report.attendance++;
+                            }
+                            window.alert("added Succesed " + enterTime);
+
+                            saveJSONFile(data, "data.json");
+                            // window.location.replace('../AddedSucess.html');
+
+
+                        }
+
+
+
+
+
+                    }
+                });
+            }).catch(error => console.log(error));
+    </script>
+</body>
+
+</html>
+
+</html>

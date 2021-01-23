@@ -1,0 +1,138 @@
+<html>
+
+<head>
+    <title>Attendance System</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <script src="js/JQuery-3.3.1.min.js"></script>
+
+
+</head>
+
+<body>
+
+    <div class="container">
+        <nav class="navbar navbar-expand-lg navbar-light ">
+            <a class="navbar-brand  " href="#"> LOGO
+                </a>
+            <button class="navbar-toggler" type="button" data - toggle="collapse" data - target="#navbarSupportedContent" aria - controls="navbarSupportedContent" aria - expanded="false" aria - label="Toggle navigation">
+                        <span class="navbar-toggler-icon">
+                            </span>
+                                </button>
+
+            <div class="collapse navbar-collapse justify-content-end " id="navbarSupportedContent">
+                <ul class="navbar-nav ">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="#"> Home<span class="sr-only"> (current) </span></a>
+                    </li>
+
+                    <li id="sub" style="display:none;" class="nav-item">
+                        <a class="nav-link " href="/Attendance.html"> Attendence
+                            </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link " href="/index.html"> logout
+                            </a>
+                    </li>
+            </div>
+        </nav>
+    </div>
+
+
+
+    <div class="container ADMINBODY mt-3">
+        <div class="row">
+            <div class="col-12">
+                <h4 id="empName" class="text-capitalize text-center mb-4 shaan"></h4>
+            </div>
+            <div class=" col-12 ceter">
+
+                <form action="" method="GET" id="fileForm" role="form">
+
+                    <ul class="nav nav-tabs " id="myTab" role="tablist">
+                        <li class="nav-item" role="presentation">
+                            <a class="nav-link active" id="AllEmployees-tab" data-toggle="tab" href="#AllEmployees" role="tab" aria-controls="AllEmployees" aria-selected="true"> Monthly Report
+                                </a>
+                        </li>
+                        <li class="nav-item ml-4" role="presentation">
+                            <a class="nav-link" id="FullReport-tab" data-toggle="tab" href="#FullReport" role="tab" aria-controls="FullReport" aria-selected="false"> Daily Report
+                                </a>
+                        </li>
+
+                    </ul>
+                    <div class="tab-content" id="myTabContent">
+                        <div class="tab-pane p-3 fade show active" id="AllEmployees" role="tabpanel" aria - labelledby="AllEmployees-tab">
+                            <ol>
+                                <li class="d-flex">
+                                    <b class="mr-3"> Attendance Times:
+                                        </b>
+                                    <span class="bg-white d-inline-block p-1 rounded"> 20
+                                        </span>
+                                </li>
+                                <li class="d-flex mt-2">
+                                    <b class="mr-3"> Late Times:
+                                        </b>
+                                    <span class="bg-white d-inline-block p-1 rounded">
+                                        3
+                                        </span>
+                                </li>
+                                <li class="d-flex mt-2">
+                                    <b class="mr-3"> Absence Time:
+                                        </b>
+                                    <span class="bg-white d-inline-block p-1 rounded">
+                                        1
+                                        </span>
+                                </li>
+                            </ol>
+                        </div>
+                        <div class="tab-pane fade p-4" id="FullReport" role="tabpanel" aria - labelledby="FullReport-tab">
+                            <ol>
+                                <li class="d-flex">
+                                    <b class="mr-3"> Attendance Times:
+                                        </b>
+                                    <span id="attndanceTimeid" class="bg-white d-inline-block p-1 rounded">
+                                        20
+                                        </span>
+                                </li>
+                                <li class="d-flex mt-2">
+                                    <b class="mr-3"> Late Times:
+                                        </b>
+                                    <span id="lateTimeid" class="bg-white d-inline-block p-1 rounded"> 3  </span>
+                                </li>
+                                <li class="d-flex mt-2">
+                                    <b class="mr-3"> Absence Time: </b>
+                                    <span id="absenceTimeid" class="bg-white d-inline-block p-1 rounded"> 1 </span>
+                                </li>
+                            </ol>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-- --------------------------------------------- -->
+    <script src="js/JQuery-3.3.1.min.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/main.js"></script>
+    <script>
+        // document.getElementById("empName").innerText 
+        var data = JSON.parse(sessionStorage.getItem("userdata"));
+        if (data.sub) {
+            document.getElementById("sub").style.display = "inline-block";
+        }
+
+        var username = data.firstname + " " + data.lastname;
+        var repordata = data.report;
+        console.log(repordata.attendance);
+        //$("h4").append.toString(username);
+        // document.getElementById("empName").textContent = username;
+
+        document.getElementById("empName").innerHTML = username;
+        document.getElementById("attndanceTimeid").innerHTML = repordata.attendance;
+        document.getElementById("lateTimeid").innerHTML = repordata.late;
+        document.getElementById("absenceTimeid").innerHTML = repordata.absence;
+    </script>
+</body>
+
+</html>

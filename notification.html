@@ -1,0 +1,143 @@
+<html>
+
+<head>
+    <title>Attendance System</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/font-awesome.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <script>
+        fetch('data.json')
+            .then(function(response) {
+                return response.json();
+            })
+            .then(function(data) {
+                // console.log(data)
+
+                // td
+                var requests = JSON.parse(localStorage.getItem("users"));
+                console.log(requests);
+
+                var html = "<table  border='1|1'>";
+                var html = `<thead class="text-center" > 
+                    
+                    <th class="text-center" >username </th>
+                                <th>firstname </th>
+                                <th>lastname </th>
+                                <th>address </th>
+                                <th>email </th>
+                                <th>age </th>
+                                <th>password </th>
+                                <th>new </th>
+                                <th>Status </th>
+                    </thead>`
+                for (var i = 0; i < requests.length; i++) {
+                    html += "<tr class='text-center'>";
+                    html += "<td class='p-2 col small'>" + requests[i].username + "</td>";
+                    html += "<td class='p-2 col small'>" + requests[i].firstname + "</td>";
+                    html += "<td class='p-2 col small'>" + requests[i].lastname + "</td>";
+                    html += "<td class='p-2 col small'>" + requests[i].address + "</td>";
+                    html += "<td class='p-2 col small'>" + requests[i].email + "</td>";
+                    html += "<td class='p-2 col small'>" + requests[i].age + "</td>";
+                    html += "<td class='p-2 col small'>" + requests[i].password + "</td>";
+                    html += "<td class='p-2 col small'>" + requests[i].new + "</td>";
+                    html += "<td class='d-flex justify-content-between'>" + "<button class='btn p-0 bg-transparent' onclick='add(this)' >" + '<i class="fa fa-check text-success"></i>' + "</button>" + "<button onclick='remove(this)' class='btn p-0 bg-transparent'  >" + '<i class="fa fa-remove text-danger  "></i>' + "</button>" + "</td>";
+                    html += "</tr>";
+                }
+                html += "</table>";
+                document.getElementById("box").innerHTML = html;
+                // Remove Fun
+
+                remove = function(target) {
+                    // console.log(((target.parentElement).parentElement).rowIndex - 1);
+                    var row = (target.parentElement).parentElement;
+                    var index = row.rowIndex - 1;
+                    requests.splice(index, 1);
+                    row.parentNode.removeChild(row);
+                    localStorage.setItem("users", JSON.stringify(requests))
+
+                }
+                add = function(target) {
+                    // console.log(((target.parentElement).parentElement).rowIndex - 1);
+                    var row = (target.parentElement).parentElement;
+                    var index = row.rowIndex - 1;
+                    var newData = requests.splice(index, 1)[0];
+                    data.push(newData);
+                    // console.log(data);
+                    row.parentNode.removeChild(row);
+                    localStorage.setItem("users", JSON.stringify(requests));
+                    saveJSONFile(data, "data.json")
+
+                }
+
+                function saveJSONFile(data, filename) {
+                    var dataToSave = new Blob([JSON.stringify(data)], {
+                        type: "application/json"
+                    });
+                    var link = document.createElement("a");
+                    link.href = window.webkitURL.createObjectURL(dataToSave);
+                    link.setAttribute("download", filename);
+                    document.getElementsByTagName("body")[0].appendChild(link);
+                    link.click();
+                    $(link).remove();
+                }
+            })
+            .catch(function(err) {
+                console.log(err);
+            });
+    </script>
+</head>
+
+
+<body>
+    <div class="container">
+
+
+        <nav class="navbar navbar-expand-lg navbar-light ">
+            <a class="navbar-brand  " href="#">LOGO</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+            <div class="collapse navbar-collapse justify-content-end " id="navbarSupportedContent">
+                <ul class="navbar-nav ">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link " href="/AdminPanel.html">admin panel</a>
+                    </li>
+
+
+            </div>
+        </nav>
+    </div>
+
+
+    <section class="noti-box mt-5">
+        <div class="container-fluid ">
+            <div class="row justify-content-center">
+                <div class="col-10">
+                    <h5 class="text-capitalize mb-4">notification</h5>
+                </div>
+                <div class="col-md-10">
+                    <div class="noti-items p-1 table-responsive  ">
+                        <table class="table table-bordered table-sm" id="box">
+
+
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- --------------------------------------------- -->
+    <script src="js/JQuery-3.3.1.min.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/main.js"></script>
+</body>
+
+</html>
+
+</html>

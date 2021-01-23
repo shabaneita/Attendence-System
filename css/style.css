@@ -1,0 +1,173 @@
+    .register-bannar {
+        background-image: url(/images/preparing-reports.jpg);
+        background-size: cover;
+        height: 300px;
+    }
+    /* NavBar style */
+    
+    .navbar {
+        position: relative;
+        z-index: 5;
+    }
+    /* index style */
+    
+    .bannar {
+        background-image: url(/images/preparing-reports.jpg);
+        background-size: cover;
+        height: 100vh;
+        position: relative;
+    }
+    
+    .bannar::after {
+        content: '';
+        position: absolute;
+        height: 100%;
+        width: 100%;
+        left: 0;
+        bottom: 0;
+        top: 0;
+        right: 0;
+        background-color: #00000070;
+        z-index: 2;
+    }
+    
+    fieldset {
+        border: thin solid #ccc;
+        border-radius: 4px;
+        padding: 20px;
+        padding-left: 40px;
+        background: #fbfbfb;
+    }
+    
+    legend {
+        color: #678;
+    }
+    
+    .form-control {
+        width: 95%;
+    }
+    
+    label small {
+        color: #678 !important;
+    }
+    
+    span.req {
+        color: maroon;
+        font-size: 112%;
+    }
+    
+    .ADMINBODY ul {
+        border: 1px;
+        padding: 10px;
+        color: white;
+    }
+    
+    .ADMINBODY a {
+        padding: 5px 50px;
+        color: black;
+    }
+    
+    .ADMINBODY a.active {
+        background-color: orange !important;
+        color: white !important;
+    }
+    
+    .ADMINBODY table thead {
+        margin-top: 50px;
+        color: white;
+        margin: 10px 50px;
+        text-align: center;
+    }
+    
+    .ADMINBODY table td {
+        border: 2px solid green;
+        text-align: center;
+        margin: 10px 50px;
+        padding: 10px;
+    }
+    
+    #Adm {
+        padding: 17px;
+        background-color: white;
+        color: black;
+        border: 1px solid rgb(25, 150, 13);
+        border-radius: 80%;
+        font-size: large;
+    }
+    /*** Register Pages ***/
+    
+    .register-bannar {
+        position: relative;
+    }
+    
+    .register-bannar::before {
+        content: '';
+        position: absolute;
+        height: 100%;
+        width: 100%;
+        left: 0;
+        bottom: 0;
+        top: 0;
+        right: 0;
+        background-color: #00000070;
+        z-index: 2;
+    }
+    
+    .breadcrumb {
+        background-color: transparent;
+        position: relative;
+        z-index: 5;
+    }
+    
+    .breadcrumb ol li {
+        color: #ff7373;
+    }
+    
+    .box-attendance {
+        background-color: #e4e3e3;
+        height: 60%;
+        padding: 20px;
+        border-radius: 14px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+    
+    .ADMINBODY .nav .nav-item a {
+        border: 1px solid #00000021;
+        border-radius: 5px;
+    }
+    
+    .ADMINBODY .tab-content .tab-pane {
+        background: #cccccc29;
+        border-radius: 10px;
+    }
+    
+    .noti-box .noti-items {
+        background-color: #cccccc2b;
+        border-radius: 5px;
+    }
+    
+    .noti-box .noti-items ul li h5 {
+        font-size: 16px;
+    }
+    
+    .noti-box .noti-items ul li:last-of-type {
+        margin: 0 !important;
+    }
+    
+    .noti-box .noti-items ul li .icon span i {
+        height: 35px;
+        width: 35px;
+        line-height: 35px;
+        text-align: center;
+        cursor: pointer;
+        margin: 0 10px;
+    }
+    /* ----------------- */
+    
+    #pReg {
+        background-color: #28a745ab;
+        text-align: center;
+    }
